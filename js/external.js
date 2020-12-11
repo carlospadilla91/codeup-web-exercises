@@ -26,10 +26,14 @@ alert("You made " + totalPayment + " Dollars!");
 
 
 //3
-
+let isClassOpen = confirm("Is there room in class?");
+let isScheduleOpen = confirm("Does this work with your schedule?");
+alert("You may register: " + (isClassOpen && isScheduleOpen));
 
 //4
 var itemsBought = prompt('How many items did you buy?');
-var isOfferExpired = confirm('Has the offer expired?');
+var isOfferValid = confirm('Is the offer valid?');
 var isPremiumMember = confirm('Are you a premium member?');
-alert("Special offer applied: " + )
+var canApplyOffer = (isOfferValid && (itemsBought >= 2 || isPremiumMember));
+alert("Offer is: " + canApplyOffer);
+
