@@ -5,10 +5,10 @@
 //  // * Create a function called 'sayHello' that takes a parameter 'name'.
 //  // * When called, the function should return a message that says hello to the passed in name.
  function sayHello(name) {
-      return 'Hello ' + name + '!';
+      return 'Hello, ' + name + '!';
  }
 //  // * Example
-//  // * > sayHello("codeup") // returns "Hello, codeup!"
+        console.log(sayHello("codeup")) // returns "Hello, codeup!"
 //
 //
 // // /**
@@ -16,7 +16,7 @@
 // //  * Call the function 'sayHello' and pass your name as a string literal argument.
 // //  * Store the result of the function call in a variable named 'helloMessage'.
     var helloMessage = sayHello('Carlos');
- console.log(helloMessage);
+    console.log(helloMessage);
 
 // //  * console.log 'helloMessage' to check your work
 // //  */
@@ -63,7 +63,7 @@ var random = Math.floor((Math.random() * 3) + 1);
 //  * restaurant. The function should accept a tip percentage and the total of the
 //  * bill, and return the amount to tip
     function calculateTip(percentOfTip, billTotal) {
-        return billTotal * (percentOfTip/100);
+        return (percentOfTip/100) * billTotal;
     }
 // //  * Examples:
     console.log(calculateTip(0.20, 20)) // returns 4
@@ -96,4 +96,6 @@ var random = Math.floor((Math.random() * 3) + 1);
     console.log(applyDiscount(originalPrice, dicountPercent)) // 80
 //  *
     console.log(applyDiscount(45.99, 0.12)) // 40.4712
+    console.log(applyDiscount(50, .5 ));
 //  */
+
