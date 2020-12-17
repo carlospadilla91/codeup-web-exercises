@@ -155,10 +155,10 @@ alert("The price after discount is " + (calculateTotal(luckyNumber, totalBill)))
  */
 
 var enterNumber = confirm("Would you like to enter a number?");
-var isEvenOrOdd = num % 2;
+
 if(enterNumber === true) {
     var num = prompt("Enter any number");
-} else if(num % 2 === 1){
+} else if (parseFloat(num) % 2 === 0){
     alert(num + " is even.");
 } else {
     isNaN(num);
