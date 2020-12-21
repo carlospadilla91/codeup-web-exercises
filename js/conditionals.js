@@ -11,11 +11,11 @@
 // //
     function analyzeColor(strColor) {
         if(strColor === 'blue') {
-            return strColor + " is the color of the sky";
+            return"blue is the color of the sky";
         } else if(strColor === 'red') {
-            return "Strawberries are " + strColor;
+            return "Strawberries are red";
         } else if(strColor === 'cyan') {
-            return "I don't know anything about " + strColor;
+            return "I don't know anything about cyan" ;
         } else {
             return "No"
         }
@@ -59,18 +59,32 @@ var strColor = randomColor
 
 switch (strColor) {
     case 'blue':
-        console.log(strColor + " is the color of the sky");
+        console.log("blue is the color of the sky");
         break;
     case 'red':
-        console.log("Strawberries are " + strColor);
+        console.log("Strawberries are red");
         break;
     case 'cyan':
-        console.log("I don't know anything aboout " + strColor);
+        console.log("I don't know anything about cyan");
         break;
     default:
         console.log("No");
         break;
 }
+        function analyzeColorSwitch(color) {
+            switch (color) {
+                case 'blue':
+                    return 'blue is the color of the sky';
+                case 'red':
+                    return "Strawberries are red.";
+                case 'cyan':
+                    return "I don't know anything about cyan";
+                default:
+                    return "No";
+            }
+        }
+analyzeColorSwitch();
+
 
 // // /**
 // //  * TODO:
@@ -78,7 +92,7 @@ switch (strColor) {
 // //  * user to your `analyzeColor` function. Alert the return value from your
 // //  * function to show it to the user.
 // //  */
-var favColor = prompt("What is you favorite color?");
+var favColor = prompt("What is you favorite color?").toLowerCase();
 alert(analyzeColor(favColor));
 //
 // /* ########################################################################## */
@@ -112,6 +126,51 @@ alert(analyzeColor(favColor));
 
 
     }
+
+// function calculateTotal(luckyNum, totalAmount) {
+//     var discountNumber;
+//     switch (luckyNum) {
+//         case 0:
+//             discountNumber = 0;
+//             break;
+//         case 1:
+//             discountNumber = .1;
+//             break;
+//         case 2:
+//             discountNumber = .25;
+//             break;
+//         case 3:
+//             discountNumber = .35;
+//             break;
+//         case 4:
+//             discountNumber = .5;
+//             break;
+//         case 5:
+//             discountNumber = 1;
+//             break
+//     }
+//     return totalAmount - (discountNumber * totalAmount);
+// }
+//     if(luckyNum === 0) {
+//         return totalAmount;
+//     } else if(luckyNum === 1) {
+//         return totalAmount - (totalAmount * .1);
+//     } else if(luckyNum === 2) {
+//         return totalAmount - (totalAmount *.25);
+//     } else if(luckyNum === 3) {
+//         return totalAmount - (totalAmount * .35);
+//     } else if(luckyNum === 4) {
+//         return totalAmount - (totalAmount / 2);
+//     } else if(luckyNum === 5) {
+//         return 0;
+//     } else {
+//         return "No";
+//     }
+//
+//
+// }
+
+
 // //  * Example:
 console.log(calculateTotal(0, 100)); // returns 100
 console.log(calculateTotal(4, 100)); // returns 50
@@ -132,10 +191,10 @@ console.log(calculateTotal(6, 100));
 //  */
 // // Generate a random number between 0 and 6
 var luckyNumber = Math.floor(Math.random() * 6);
-var totalBill = prompt("What is your bill total?");
-alert("Your lucky number is " + luckyNumber);
-alert("The price before your discount is " + totalBill);
-alert("The price after discount is " + (calculateTotal(luckyNumber, totalBill)));
+var totalBill = parseFloat(prompt("What is your bill total?"));
+// alert("Your lucky number is: " + luckyNumber);
+// alert("The price before your discount is " + totalBill);
+// alert("The price after discount is " + (calculateTotal(luckyNumber, totalBill)));
 
 /**
  * TODO:
@@ -156,11 +215,31 @@ alert("The price after discount is " + (calculateTotal(luckyNumber, totalBill)))
 
 var enterNumber = confirm("Would you like to enter a number?");
 
-if(enterNumber === true) {
-    var num = prompt("Enter any number");
-} else if (parseFloat(num) % 2 === 0){
-    alert(num + " is even.");
-} else {
-    isNaN(num);
-    alert("You did not enter a number");
+function isNumeric(input) {
+    return !isNaN(input);
 }
+
+function createEvenOddMessage(number) {
+   return (number % 2 === 0) ? number + " is even." : number + " is odd.";
+}
+
+function createNumberPlus100Message(number) {
+    return number + " plus 100 is " + (number + 100);
+}
+
+function createNegativePositiveMessage(number) {
+    return (number < 0) ? number + " is negative" : number + " is positive";
+}
+
+if(enterNumber === true) {
+    var number = parseFloat(prompt("Enter any number"));
+    if (isNumeric(number)) {
+        alert(createEvenOddMessage(number));
+        alert(createNumberPlus100Message(number));
+        alert(createNegativePositiveMessage(number));
+    } else {
+        alert("Input not a number!");
+    }
+
+}
+
