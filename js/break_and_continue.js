@@ -11,7 +11,7 @@ function isValid(input) {
 }
 
 function getUserNumber() {
-    var userNum;
+    // var userNum;
     while(true) {
         userNum = prompt("Enter odd number between 1 and 50");
         if (isValid(userNum)) {
@@ -25,7 +25,7 @@ function getUserNumber() {
 function createOddNumberMessages(userNum) {
     console.log("Number to skip is: " + userNum);
     console.log("");
-    for (var i = 1; i <= 50; i += 1) {
+    for (var i = 1; i < 50; i += 1) {
         if (i === parseFloat(userNum)) {
             console.log("Yikes! Skipping number: " + userNum);
             continue;

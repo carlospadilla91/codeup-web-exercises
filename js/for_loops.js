@@ -18,10 +18,10 @@ showMultiplicationTable(7);
     }
 
 
-for (var i = 1; i < 10; i += 1) {
-    console.log(String(i).repeat(i));
-}
-
 for(x = 100; x >= 5; x -= 5) {
     console.log(x);
+}
+
+for (var i = 1; i < 10; i++) {
+    console.log(String(i).repeat(i));
 }
