@@ -64,7 +64,7 @@ names.forEach(function(name) {
     }
 
     function last(array) {
-        return array.pop();
+        return array.pop(); // array[array.length -1]
     }
 
     console.log(first([1, 2, 3, 4, 5]));
