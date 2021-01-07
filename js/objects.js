@@ -29,9 +29,10 @@
      * > console.log(person.sayHello()) // "Hello from Rick Sanchez!"
      */
 
-    person.hi = function sayHello() {
-        return "Hello from " + person.firstName + ' ' + person.lastName;
-    };
+    person.sayHello = function() {
+        return "Hello from " + this.firstName + ' ' + this.lastName
+    }
+
     console.log(person.sayHello());
     /** TODO:
      * HEB has an offer for the shoppers that buy products amounting to
@@ -47,11 +48,65 @@
      * and console.log the relevant messages for each person
      */
 
-    // var shoppers = [
-    //     {name: 'Cameron', amount: 180},
-    //     {name: 'Ryan', amount: 250},
-    //     {name: 'George', amount: 320}
-    // ];
+    var shoppers = [
+        {name: 'Cameron', amount: 180},
+        {name: 'Ryan', amount: 250},
+        {name: 'George', amount: 320}
+    ];
+
+    function calculateDiscount(amount, discountAmountThreshold, discountPercentage){
+        if (amount > discountAmountThreshold) {
+            return amount * discountPercentage;
+        } else {
+            return 0
+        } // return (amount > discountAmountThreshold) ? amount * discountPercentage : 0; ternary way
+    }
+
+    function numToDollars(num) {
+        return '$' + num.toFixed(2);
+    }
+
+    var discountAmountThreshold = 200;
+    var discountPercentage = .12;
+
+    shoppers.forEach(function(shopper){
+        var shopperName = shopper.name;
+        var amountBeforeDiscount = shopper.amount;
+        var amountOff = calculateDiscount(amountBeforeDiscount, discountAmountThreshold, discountPercentage )
+        var totalCost = amountBeforeDiscount - amountOff;
+        var message = shopperName +
+            " purchased " + numToDollars(amountBeforeDiscount) +
+            " and is getting " + numToDollars(amountOff) + " off the purchase price" +
+            " and is paying " + numToDollars(totalCost);
+        console.log(message);
+    });  // higher order function
+
+
+
+
+    // var discountRate = .12
+    // function isDiscountApplied(amountSpent){
+    //     if(amountSpent >= 200) {
+    //         return amountSpent - (amountSpent * discountRate);
+    //     }
+    //     return "No discount available"
+    // }
+    // var amountToSpendForDiscount = 200
+
+    // shoppers.forEach(function(shopper) {
+    //     console.log(shopper.name + " spent " + numToDollars(shopper.amount) + " before discount");
+    //     console.log("The discount is 12%");
+    //     console.log("After discount, " + shopper.name + " spent " + (isDiscountApplied(shopper.amount)));
+    // })
+
+    // shoppers.forEach(function(shopper){
+    //     if(shopper.amount >= amountToSpendForDiscount) {
+    //         console.log(shopper.name + " spent " + numToDollars(shopper.amount) + " before discount.")
+    //         console.log("The discount is 12%");
+    //         console.log("After discount, " + shopper.name + " spent " + isDiscountApplied(shopper.amount));
+    //     }
+    //     return console.log(shopper.name + " " + isDiscountApplied(shopper.amount));
+    // })
 
     /** TODO:
      * Create an array of objects that represent books and store it in a
@@ -66,6 +121,38 @@
      * > console.log(books[0].author.lastName) // "Adams"
      */
 
+    var books = [
+        {title: "The Salmon of Doubt",
+        author: {
+            firstName: "Douglas",
+            lastName: "Adams",
+    }},
+        {title: "A Game of Thrones",
+            author: {
+                firstName: "George R.R",
+                lastName: "Martin",
+            }},
+        {title: "To Kill A Mockingbird",
+            author: {
+                firstName: "Harper",
+                lastName: "Lee",
+            }},
+        {title: "Moby Dick",
+            author: {
+                firstName: "Herman",
+                lastName: "Melville",
+            }},
+
+        {title: "The Lord of The Rings",
+            author: {
+                firstName: "J. R.R.",
+                lastName: "Tolkien",
+            },
+        }]
+
+    console.log(books[0].title); //The Salmon of Doubt
+    console.log(books[3].author.firstName); //Herman
+    console.log(books[4].title); //The Lord of The Rings
     /**
      * TODO:
      * Loop through the books array and output the following information about
@@ -90,6 +177,13 @@
      *      ---
      *      ...
      */
+
+        books.forEach(function (book,index) {
+            var titleOfBook = book.title;
+            var bookAuthor = book.author.firstName + " " + book.author.lastName;
+            var message = "Book # " + index + "\n" + "Title: " + titleOfBook + "\n" + "Author: " + bookAuthor;
+            console.log(message);
+        })
 
     /**
      * Bonus:
