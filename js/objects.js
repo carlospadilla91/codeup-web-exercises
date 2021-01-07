@@ -232,14 +232,21 @@
     ]
     console.log(booksUsingFunction);
 
-    function showBookInfo(bookObject) {
-        bookObject.forEach(function (book,index) {
-            var titleOfBook = book.title;
-            var bookAuthor = book.author.firstName + " " + book.author.lastName;
-            var message = "Book # " + index + "\n" + "Title: " + titleOfBook + "\n" + "Author: " + bookAuthor;
-            console.log(message);
-        })
-    }
-    showBookInfo(books);
+    // function showBookInfo(book) {
+    //     bookObject.forEach(function (book,index) {
+    //         var titleOfBook = book.title;
+    //         var bookAuthor = book.author.firstName + " " + book.author.lastName;
+    //         var message = "Book # " + index + "\n" + "Title: " + titleOfBook + "\n" + "Author: " + bookAuthor;
+    //         console.log(message);
+    //     })
+    // }
 
+    function showBookInfo(book, bookNumber) {
+        console.log("Book # " + (bookNumber + 1));
+        console.log("Title: " + book.title);
+        console.log("Author: " + book.author.firstName + ' ' + book.author.lastName);
+        console.log("---");
+    }
+
+    books.forEach(showBookInfo)
 })();
