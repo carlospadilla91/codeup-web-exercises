@@ -16,8 +16,8 @@
         firstName: "Carlos",
         lastName: "Padilla"
     }
-    console.log(person.firstName);
-    console.log(person.lastName);
+    // console.log(person.firstName);
+    // console.log(person.lastName);
 
     /**
      * TODO:
@@ -33,7 +33,7 @@
         return "Hello from " + this.firstName + ' ' + this.lastName
     }
 
-    console.log(person.sayHello());
+    // console.log(person.sayHello());
     /** TODO:
      * HEB has an offer for the shoppers that buy products amounting to
      * more than $200. If a shopper spends more than $200, they get a 12%
@@ -69,18 +69,18 @@
     var discountAmountThreshold = 200;
     var discountPercentage = .12;
 
-    shoppers.forEach(function(shopper){
-        var shopperName = shopper.name;
-        var amountBeforeDiscount = shopper.amount;
-        var amountOff = calculateDiscount(amountBeforeDiscount, discountAmountThreshold, discountPercentage )
-        var totalCost = amountBeforeDiscount - amountOff;
-        var message = shopperName +
-            " purchased " + numToDollars(amountBeforeDiscount) +
-            " and is getting " + numToDollars(amountOff) + " off the purchase price" +
-            " and is paying " + numToDollars(totalCost);
-        console.log(message);
-    });  // higher order function
-
+    // shoppers.forEach(function(shopper){
+    //     var shopperName = shopper.name;
+    //     var amountBeforeDiscount = shopper.amount;
+    //     var amountOff = calculateDiscount(amountBeforeDiscount, discountAmountThreshold, discountPercentage )
+    //     var totalCost = amountBeforeDiscount - amountOff;
+    //     var message = shopperName +
+    //         " purchased " + numToDollars(amountBeforeDiscount) +
+    //         " and is getting " + numToDollars(amountOff) + " off the purchase price" +
+    //         " and is paying " + numToDollars(totalCost);
+    //     console.log(message);
+    // });  // higher order function
+    //
 
 
 
@@ -150,9 +150,9 @@
             },
         }]
 
-    console.log(books[0].title); //The Salmon of Doubt
-    console.log(books[3].author.firstName); //Herman
-    console.log(books[4].title); //The Lord of The Rings
+    // console.log(books[0].title); //The Salmon of Doubt
+    // console.log(books[3].author.firstName); //Herman
+    // console.log(books[4].title); //The Lord of The Rings
     /**
      * TODO:
      * Loop through the books array and output the following information about
@@ -178,12 +178,28 @@
      *      ...
      */
 
-        books.forEach(function (book,index) {
-            var titleOfBook = book.title;
-            var bookAuthor = book.author.firstName + " " + book.author.lastName;
-            var message = "Book # " + index + "\n" + "Title: " + titleOfBook + "\n" + "Author: " + bookAuthor;
-            console.log(message);
+        // for(var i = 0; i < books.length; i += 1) {
+        //     var bookNumber = i + 1;
+        //     console.log("Book # " + bookNumber);
+        //     console.log("Title: " + books[i].title);
+        //     console.log("Author: " + books[i].author.firstName + ' ' + books[i].author.lastName);
+        //     console.log("---");
+        // }
+
+        books.forEach(function(book,index){
+            var bookNumber = index + 1;
+            console.log("Book # " + bookNumber);
+            console.log("Title: " + book.title);
+            console.log("Author: " + book.author.firstName + ' ' + book.author.lastName);
+            console.log("---");
         })
+
+        // books.forEach(function (book,index) {
+        //     var titleOfBook = book.title;
+        //     var bookAuthor = book.author.firstName + " " + book.author.lastName;
+        //     var message = "Book # " + index + "\n" + "Title: " + titleOfBook + "\n" + "Author: " + bookAuthor;
+        //     console.log(message);
+        // })
 
     /**
      * Bonus:
@@ -195,5 +211,35 @@
      *   outputs the information described above. Refactor your loop to use your
      *   `showBookInfo` function.
      */
+
+    function createBook(title, author) {
+        var nameArr = author.split(" ");
+        var firstName = nameArr[0];
+        var lastName = nameArr[1];
+        return {
+            title: title,
+            author: {
+                firstName: firstName,
+                lastName: lastName
+            }
+        }
+    }
+
+    console.log(createBook("A Game of Thrones", "George Martin"));
+
+    var booksUsingFunction = [
+        createBook('The Salmon of Doubt', 'Douglas Adams')
+    ]
+    console.log(booksUsingFunction);
+
+    function showBookInfo(bookObject) {
+        bookObject.forEach(function (book,index) {
+            var titleOfBook = book.title;
+            var bookAuthor = book.author.firstName + " " + book.author.lastName;
+            var message = "Book # " + index + "\n" + "Title: " + titleOfBook + "\n" + "Author: " + bookAuthor;
+            console.log(message);
+        })
+    }
+    showBookInfo(books);
 
 })();
