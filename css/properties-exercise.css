@@ -1,0 +1,47 @@
+/*===== GROUP 2 - Color Properties (Ghidorah)*/
+/*Prepare code examples to present answers to the following questions:*/
+
+/*How does hexadecimal color coding work?*/
+/* Hexadecimal colors are represented by 6 characters from a possible 16.
+ e.g. 0-9 A-F
+ 1st pair represents red, 2nd pair is green and 3rd pair is blue.
+ #FF0000 is red, #00FF00 is green and #0000FF is blue. */
+
+.hex {
+    color: #00FF00;
+}
+
+/*Why use CSS color names over hex values and vice versa?*/
+/* CSS color names are more human readable whereas hex values gives a lot more options...over 16 million color combos */
+
+.color-name {
+    color: green;
+}
+
+/*Why use rgb to define a CSS color vs. a hex value?
+RGB is defined with only 3 numbers separated by commas. */
+
+#first {
+    color: rgb(4,90,239);
+}
+
+/*What is the difference between 3 digit hex values and 6?
+A hex value with only 3 characters is just a shorthand option; e.g. #FF0000 = #F00*/
+
+h3 {
+    color: #F00
+}
+
+
+/*'background' and 'background-color' properties can produce the same output; why is this possible?
+*/
+
+/*What is the 'a' in rgba?
+The 'a' stands for alpha...which means you can specify the opacity level of a color*/
+
+/*What is the 'Digital Color Meter' on a Mac? How is the helpful?
+It's an app that comes */
+
+
+/*BONUS (if time)*/
+/*What are CSS gradients?*/
