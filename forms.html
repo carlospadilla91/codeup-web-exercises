@@ -5,12 +5,13 @@
     <title>Register With Us!</title>
 </head>
 <body>
-    <header>
-        <h1>Register With Us!</h1>
-    </header>
+<header>
+    <h1>Register With Us!</h1>
+</header>
 
-    <form method="POST" action="https://request-inspector.glitch.me/">
+<form method="POST" action="https://request-inspector.glitch.me/">
 
+    <section>
         <label for="email">Email:</label>
         <input name="email" id="email" type="text" placeholder="Enter email">
         <br>
@@ -25,30 +26,36 @@
         <textarea name="bio" id="bio" cols="17" rows="5" maxlength="140"></textarea>
         <br>
         <br>
+    </section>
 
-        <label for="howDidYou">How did you hear about us?</label>
+    <section>
+        <h2>How did you hear about Veridian Dynamics?</h2>
+        <input name="capture" id="billboard" type="radio" value="billboard">
+        <label for="billboard">Billboard</label>
         <br>
-        <input name="how" id="howDidYou" type="radio" value="billboard">Billboard
+        <input name="capture" id="radio ad" type="radio" value="radio">
+        <label for="radio ad">Radio advertisement</label>
         <br>
-        <input name="how" id="howDidYou" type="radio" value="radio">Radio advertisement
+        <input name="capture" id="internet ad" type="radio" value="internet">
+        <label for="internet ad">Internet advertisement</label>
         <br>
-        <input name="how" id="howDidYou" type="radio" value="internet">Internet advertisement
+        <input name="capture" id="other" type="radio" value="other">
+        <label for="other">Other</label>
         <br>
-        <input name="how" id="howDidYou" type="radio" value="other">Other
         <br>
-        <br>
+    </section>
 
-        <label for="webBrowser">What web browser are you using?</label>
-        <select name="webBrowser" id="webBrowser">
-            <option value="">-please select one-</option>
-            <option value="chrome">Google Chrome</option>
-            <option value="firefox">Firefox</option>
-            <option value="safari">Safari</option>
-            <option value="other">Other</option>
-        </select>
-        <br>
-        <br>
-        <button type="submit">Submit</button>
-    </form>
+    <label for="webBrowser">What web browser are you using?</label>
+    <select name="webBrowser" id="webBrowser">
+        <option value="">-please select one-</option>
+        <option value="chrome">Google Chrome</option>
+        <option value="firefox">Firefox</option>
+        <option value="safari">Safari</option>
+        <option value="other">Other</option>
+    </select>
+    <br>
+    <br>
+    <button type="submit">Submit</button>
+</form>
 </body>
 </html>
