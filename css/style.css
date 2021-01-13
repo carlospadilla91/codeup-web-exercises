@@ -55,3 +55,7 @@ a:active {
 ul, ol {
     color: steelblue;
 }
+
+img {
+    border: 1px black solid;
+}
