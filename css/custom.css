@@ -1,0 +1,17 @@
+.button-custom {
+    margin-left: auto;
+}
+.jumbotron {
+    background-image: url("../img/pizza.png");
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    background: rgba(255,255,255,.5);
+    color: gray;
+}
+.btn-outline-success {
+    color: black;
+    border-color: lightgray;
+}
