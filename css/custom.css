@@ -4,7 +4,6 @@
 .jumbotron {
     background-image: url("../img/pizza.png");
 }
-
 h1 {
     display: flex;
     justify-content: center;
@@ -14,4 +13,8 @@ h1 {
 .btn-outline-success {
     color: black;
     border-color: lightgray;
+}
+
+.custom-li {
+    padding-left: 40px;
 }
