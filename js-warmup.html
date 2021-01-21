@@ -53,6 +53,17 @@
     console.log(returnSeven(0));
     console.log(returnSeven(3242));
 
+    function isEvenlyDivisible(x, y) {
+        if(typeof x !== 'number' || typeof y !== 'number') {
+            return false
+        } else {
+            return x % y === 0
+        }
+    }
+
+    console.log(isEvenlyDivisible(6, 3));
+    console.log(isEvenlyDivisible('dog', 1));
+
 </script>
 
 </body>
