@@ -64,6 +64,15 @@
     console.log(isEvenlyDivisible(6, 3));
     console.log(isEvenlyDivisible('dog', 1));
 
+    function firstAndLast(arr) {
+        var bucket = [];
+        bucket.push(arr[0]);
+        bucket.push(arr[arr.length -1]);
+        return bucket;
+    }
+
+    console.log(firstAndLast([1, 2, 3, 4, 5]));
+    console.log(firstAndLast(['carlos', 'padilla', 'noriega']));
 </script>
 
 </body>
