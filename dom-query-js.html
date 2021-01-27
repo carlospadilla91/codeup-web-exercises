@@ -51,8 +51,9 @@
             listItems[i].style.color = "Gray";
         }
         // TODO: Set text color of li with dbid = 1 to blue
-        // document.querySelectorAll('[data-name*="data-dbid = 1"]').style.color = 'blue';
-        document.getElementsByTagName('li')[0].style.color = 'blue';
+
+        // document.getElementsByTagName('li')[0].style.color = 'blue';
+        document.querySelector("li[data-dbid = '1']").style.color = 'blue'
 
         // TODO: Uncomment the next line and get all elements with class name sub-paragraph
         var subParagraphs = document.getElementsByClassName("sub-paragraph");
