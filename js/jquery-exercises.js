@@ -9,10 +9,9 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-   var contents = $("#header-1").html();
-   alert(contents);
-   var content = $("#header-2").html();
-   alert(content);
+   // alert($("#header-1").html());
+   // var content = $("#header-2").html();
+   // alert(content);
 });
 // can i alert content without having to create a var?
 
@@ -22,7 +21,12 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $("li").css("font-size", "20px" );
+    $("h1").css("background-color", "skyblue");
+    $("p").css("background-color", "skyblue");
+    $("li").css("background-color", "skyblue");
     $("h1, p, li").css("background-color", "gray");
-    var contents = $("h1").text();
-    alert(contents);
+    // alert($("h1").html());
+    $("h1").each(function () {
+        alert($(this).html())
+    });
 });
