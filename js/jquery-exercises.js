@@ -25,7 +25,7 @@ window.onload = function () {
 //     $("p").css("background-color", "skyblue");
 //     $("li").css("background-color", "skyblue");
 //     $("h1, p, li").css("background-color", "gray");
-//     // alert($("h1").html());
+//     alert($("h1").html());
 //     $("h1").each(function () {
 //         alert($(this).html())
 //
