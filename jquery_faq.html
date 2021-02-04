@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    dd {
+        margin-bottom: 1em;
+    }
+    .invisible {
+        visibility: hidden;
+    }
+    .highlighted {
+        background-color: greenyellow;
+    }
+</style>
+<body>
+
+<h2>10 FAQS about National Parks:</h2>
+<!--https://www.nps.gov/aboutus/faqs.htm-->
+<dl>
+    <dt class="question">What government agency oversees the National Park Service?</dt>
+    <dd class="invisible">The National Park Service is a burea of the Department of Interior</dd>
+
+    <dt class="question">How many employees are in the National Park Service?</dt>
+    <dd class="invisible">Approximately 20,000 and more than 279,000 volunteers in 2019</dd>
+
+    <dt class="question">How old is the National Park System?</dt>
+    <dd class="invisible">The National Park Service was created by an act signed by President Woodrow Wilson on August 25, 1916.</dd>
+
+    <dt class="question">What is the largest national park site?</dt>
+    <dd class="invisible">Wrangell-St. Elias National Park and Preserve, AK, at 13.2 million acres</dd>
+
+    <dt class="question">What is the smallest national park site?</dt>
+    <dd class="invisible">Smallest: Thaddeus Kosciuszko National Memorial, PA, at 0.02 acres</dd>
+
+    <dt class="question">How many people visit the national parks?</dt>
+    <dd class="invisible">Total recreation visitors to the national parks in 2019: 327,516,619.</dd>
+
+    <dt class="question">What is the most-visited national park?</dt>
+    <dd class="invisible">Golden Gate National Recreation Area. 15 million</dd>
+
+    <dt class="question">What is the National Park Service budget?</dt>
+    <dd class="invisible">FY 2017 Enacted: $2.932 billion</dd>
+
+    <dt class="question">Can I bring my pet to a national park?</dt>
+    <dd class="invisible">Some national parks welcome pets—in developed areas, on many trails and campgrounds, and in some lodging facilities.</dd>
+
+    <dt class="question">Can I bring my service dog to a national park?</dt>
+    <dd class="invisible">Yes, service dogs are legally permitted anywhere in a park that visitors can go.</dd>
+</dl>
+
+<a href="#" class="answers">Show me the answers!</a>
+
+<script src="js/jquery-3.5.1.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $('.answers').click(function (event) {
+            event.preventDefault();
+            $("dd").toggleClass("invisible");
+        })
+    });
+
+    // $(document).ready(function () {              //this function highlights all when clicked
+    //     $(".question").click(function (event) {
+    //         event.preventDefault();
+    //         $("dt").addClass("highlighted");
+    //     })
+    // });
+
+    $(document).ready(function(){       //this function highlights only the one being clicked
+        $('dt').click(function(){
+            $(this).addClass('highlighted');
+        });
+    });
+
+
+</script>
+</body>
+</html>
