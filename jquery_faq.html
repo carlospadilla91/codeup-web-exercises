@@ -14,6 +14,9 @@
     .highlighted {
         background-color: greenyellow;
     }
+    li {
+        list-style: square;
+    }
 </style>
 <body>
 
@@ -53,30 +56,75 @@
 
 <a href="#" class="answers">Show me the answers!</a>
 
+<!--https://www.nationalparked.com/big-bend?cn-reloaded=1-->
+<h3>Big Bend National Park</h3>
+<ul>
+    <li>Big Bend National Park covers a total area of 801,163 acres</li>
+    <li>Big Bend was made a national park on June 20, 1935</li>
+    <li>The highest elevation found in Big Bend is 7,832 feet on Emory Peak</li>
+    <li>The lowest elevation found in Big Bend is 1,715 feet at the Rio Grande River</li>
+</ul>
+
+<!--https://www.mysanantonio.com/news/local/article/11-facts-about-San-Antonio-s-Spanish-missions-5830493.php#photo-1529814-->
+<h3>San Antonio Missions National Historic Park</h3>
+<ul>
+    <li>Nation's largest collection of Spanish colonial resources</li>
+    <li>Theodore Roosevelt visited Mission Concepción in 1898 when he was in San Antonio with the Rough Riders</li>
+    <li>The first cattle drives originated from San Antonio's Spanish missions</li>
+    <li>The missions weren't just churches in the 18th century, they were self-sustaining towns</li>
+</ul>
+
+<!--https://www.nationalparked.com/guadalupe-mountains-->
+<h3>Guadalupe Mountains National Park</h3>
+<ul>
+    <li>Guadalupe Mountains National Park covers a total area of 86,416 acres</li>
+    <li>Guadalupe Mountains was made a national park on October 15, 1966</li>
+    <li>The highest elevation found in Guadalupe Mountains is 8,751 feet on Guadalupe Peak</li>
+    <li>The lowest elevation found in Guadalupe Mountains is 3,636 feet near Williams Road</li>
+</ul>
+
+<button type="button" class="highlight-last-li">Highlight the last fact of each park.</button>
+
 <script src="js/jquery-3.5.1.js"></script>
 <script>
 
+    //everything can be inside one $(document).ready(function () {});
+
+    //button to toggle answers
     $(document).ready(function () {
-        $('.answers').click(function (event) {
-            event.preventDefault();
+        $('.answers').click(function () {
             $("dd").toggleClass("invisible");
         })
     });
 
-    // $(document).ready(function () {              //this function highlights all when clicked
-    //     $(".question").click(function (event) {
-    //         event.preventDefault();
-    //         $("dt").addClass("highlighted");
-    //     })
-    // });
-
-    $(document).ready(function(){       //this function highlights only the one being clicked
+    //this function highlights dt when clicked
+    $(document).ready(function(){
         $('dt').click(function(){
             $(this).addClass('highlighted');
         });
     });
 
+    $(document).ready(function () {
+        $('.highlight-last-li').click(function () {
+            $('ul').each(function () {
+                $(this).children().last().addClass('highlighted');
+            })
+        })
+    });
 
+    $(document).ready(function () {     //this function is bolding all li when clicking on any h3
+        $('h3').click(function () {
+            $(this).next().children().css({
+                fontWeight: "bold"
+            })
+        })
+    });
+
+    $(document).ready(function () {
+        $('li').click(function () {
+            $(this).parent().children().first().css('color', 'blue');
+        })
+    });
 </script>
 </body>
 </html>
