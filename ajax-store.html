@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Store</title>
+</head>
+<body>
+<style>
+    * {
+        margin: 0;
+    }
+    table {
+        margin-left: auto;
+        margin-right: auto;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th {
+        background-color: #F2CD5E;
+    }
+    table, tr, th, td {
+        border: solid 1px black;
+        margin-bottom: 1em;
+        color: #4453A6;
+        height: 50px;
+        text-align: center;
+    }
+    h1, header {
+        text-align: center;
+        color: #4453A6;
+        background-color: #F2CD5E;
+        height: 50px;
+        margin-bottom: 2em;
+        border: solid black 1px;
+
+    }
+    h2 {
+        color: #4453A6;
+    }
+    button {
+        background-color: #F2CD5E;
+        color: #4453A6;
+    }
+</style>
+<header>
+    <h1>My Tool Store</h1>
+</header>
+<h2>Product Inventory</h2>
+<table id="products">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Categories</th>
+        </tr>
+    </thead>
+    <tbody id="insertProducts"></tbody>
+</table>
+
+<button type="button" id="refresh-tool">Refresh tool inventory</button>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<script>
+(function() {
+    "use strict";
+    // TODO: Create an AJAX GET request for the file under data/inventory.json
+
+        var toolsRequest = $.get("data/inventory.json")
+            .done(handlerResponse);
+
+
+    // TODO: Take the data from inventory.json and append it to the products table
+    //       HINT: Your data should come back as a JSON object; use console.log() to inspect
+    //             its contents and fields
+    //       HINT: You will want to target #insertProducts for your new HTML elements
+    function handlerResponse(items) {
+        let html = ""
+        items.forEach(function (item) {
+            html += '<tr>'
+            html += '<td>' + item.title + '</td>';
+            html += '<td>' + item.quantity + '</td>';
+            html += '<td>$' + item.price.toFixed(2) + '</td>';
+            html += '<td>' + item.categories + '</td>';
+            html += '</tr>';
+        })
+        $('#insertProducts').html(html);
+    }
+
+    // function updateTools() {
+    //     $.get("data/inventory.json")
+    //     .done(handlerResponse);
+    // }
+
+    $("#refresh-tool").click(toolsRequest);
+
+})();
+</script>
+
+</body>
+</html>
