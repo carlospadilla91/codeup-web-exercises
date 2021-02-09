@@ -78,3 +78,4 @@ window.onload = function () {
     $("li").hover(textRed, textNormal);
 
 })();
+
