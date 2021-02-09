@@ -46,7 +46,7 @@ var restaurants = [
     }
 ]
 
-mapboxgl.accessToken = mapboxToken;
+mapboxgl.accessToken = MAPBOX_TOKEN;
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11', //stylesheet location
@@ -79,7 +79,7 @@ var map = new mapboxgl.Map({
 // });
 
 restaurants.forEach(function (restaurant) {
-    geocode(restaurant.address, mapboxToken).then(function (result){
+    geocode(restaurant.address, MAPBOX_TOKEN).then(function (result){
 
         var popup = new mapboxgl.Popup()
             .setHTML(restaurant.name + "<br>" + restaurant.description);
