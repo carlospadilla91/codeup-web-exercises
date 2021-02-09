@@ -27,6 +27,11 @@ function reverseGeocode(coordinates, token) {
 
 var restaurants = [
     {
+        name: "Eddie V's Prime Seafood",
+        address: "1834 N Loop 1604 W, San Antonio, TX 78248",
+        description: "Prime Quality Seafood"
+
+    }, {
         name: "Sushi Zushi",
         address: "18720 Stone Oak @ 1604, San Antonio, TX 78258",
         description: "Japanese traditions with Latin American influences"
@@ -45,20 +50,20 @@ mapboxgl.accessToken = mapboxToken;
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11', //stylesheet location
-    center: [12.550343, 55.665957], //starting position [lng, lat]
-    zoom: 10 //starting zoom
+    center: [-98.4936, 29.4241], //starting position [lng, lat]
+    zoom: 9 //starting zoom
 });
 
-geocode("San Antonio, TX", mapboxToken).then(function(result) {
-    map.setCenter(result);
-    map.setZoom(9);
-});
-
-map.addControl(new mapboxgl.NavigationControl());
-
-var marker = new mapboxgl.Marker()
-    .setLngLat([-98.520880, 29.607730])
-    .addTo(map);
+// geocode("San Antonio, TX", mapboxToken).then(function(result) {
+//     map.setCenter(result);
+//     map.setZoom(9);
+// });
+//
+// map.addControl(new mapboxgl.NavigationControl());
+//
+// var marker = new mapboxgl.Marker()
+//     .setLngLat([-98.520880, 29.607730])
+//     .addTo(map);
 
 // var popup = new mapboxgl.Popup({ offset: 25 }).setText(
 //     'Construction on the Washington Monument began in 1848.'
@@ -66,16 +71,23 @@ var marker = new mapboxgl.Marker()
 
 
 
-map.on('click', function () {
-    var seafoodPopup = new mapboxgl.Popup()
-        .setHTML("<h3>Eddie V's Prime Seafood</h3>")
-        .addTo(map)
-    marker.setPopup(seafoodPopup);
-});
+// map.on('click', function () {
+//     var seafoodPopup = new mapboxgl.Popup()
+//         .setHTML("<h3>Eddie V's Prime Seafood</h3>")
+//         .addTo(map)
+//     marker.setPopup(seafoodPopup);
+// });
 
 restaurants.forEach(function (restaurant) {
     geocode(restaurant.address, mapboxToken).then(function (result){
 
+        var popup = new mapboxgl.Popup()
+            .setHTML(restaurant.name + "<br>" + restaurant.description);
+
+        new mapboxgl.Marker()
+            .setLngLat(result)
+            .setPopup(popup)
+            .addTo(map);
     });
 })
 
