@@ -21,7 +21,6 @@
             var pressure = data.daily[i].pressure;
             var humidity = data.daily[i].humidity;
             var iconCode = data.daily[i].weather[0].icon;
-            var iconUrl = "<img src='http://openweathermap.org/img/wn/"
             var date = data.daily[i].dt;
             var date1 = new Date (date*1000);
             var date2 = date1.toLocaleDateString("en-US");
