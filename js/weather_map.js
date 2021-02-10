@@ -1,10 +1,5 @@
 (function() {
     "use strict"
-    // Two ways to query the API:
-    //1 With a string
-
-    // $.get("https://api.openweathermap.org/data/2.5/onecall?lat=29.4241&lon=-98.4936&units=imperial&exclude=minutely,hourly&appid=" + OWM_TOKEN)
-    //     .done(renderHtml)
 
     $.get("https://api.openweathermap.org/data/2.5/onecall", {
         APPID: OWM_TOKEN,
@@ -17,68 +12,60 @@
 
     function renderHtml(data) {
         console.log(data);
-        var tempMax = data.daily[0].temp.max;
-        var tempMin = data.daily[0].temp.min;
-        var description = data.current.weather[0].description;
-        var windSpeed = data.current.wind_speed;
-        var pressure = data.current.pressure;
-
         var html = "";
-        html += "<span>" + tempMax + "</span>"
-        html += " / " + "<span>" + tempMin + "</span>"
-        html += "<p>" + "Wind: " + "<strong>" + windSpeed + "</strong>";
-        html += "</p>";
-
+        for(var i = 0; i < 5; i += 1) {
+            var tempMax = data.daily[i].temp.max;
+            var tempMin = data.daily[i].temp.min;
+            var description = data.daily[i].weather[0].description;
+            var windSpeed = data.daily[i].wind_speed;
+            var pressure = data.daily[i].pressure;
+            var humidity = data.daily[i].humidity;
+            var iconCode = data.daily[i].weather[0].icon;
+            var iconUrl = "<img src='http://openweathermap.org/img/wn/"
+            var date = data.daily[i].dt;
+            var date1 = new Date (date*1000);
+            var date2 = date1.toLocaleDateString("en-US");
+            html += "<div class='card' style='width: 17rem;'>";
+            html += "<div class='card-header text-center'>" + date2 + "</div>";
+            html += "<ul class='list-group list-group-flush'>";
+            html += "<li class='list-group-item text-center'>" + tempMax + " / " + tempMin + "<br>" + "<img src='http://openweathermap.org/img/wn/" + iconCode + ".png'>" ;
+            html += "<li class='list-group-item'>" + "Description: " + "<strong>" + description + "</strong>";
+            html += "<li class='list-group-item'>" + "Humidity: " + "<strong>" + humidity + "</strong>";
+            html += "<li class='list-group-item'>" + "Wind: " + "<strong>" + windSpeed + "</strong>";
+            html += "<li class='list-group-item'>" + "Pressure: " + "<strong>" + pressure + "</strong>";
+            html += "</ul>";
+            html += "</div>";
+        }
         $("#weather").html(html);
-
-
-        console.log(tempMax);
-        console.log(tempMin);
-        console.log(description);
-        console.log(windSpeed);
-        console.log(pressure);
-        // data.forEach(function (data) {
-        //     let $div = $("<div>").addClass('col-sm-6')
-        //
-        //     let $h2 = $("<h2>").text(data.timezone);
-        //     $div.append([$h2]);
-        //     $div.appendTo($("#weather"));
-        // })
     }
 
+    mapboxgl.accessToken = MAPBOX_TOKEN;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11', //stylesheet location
+        center: [-98.4936, 29.4241], //starting position [lng, lat]
+        zoom: 9 //starting zoom
+    });
+    //adding controls
+    map.addControl(new mapboxgl.NavigationControl());
 
-    // var handlerResponse = function (days) {
-    //     var html = "";
-    //     days.forEach(function (day) {
-    //         html += day.temp;
-    //     })
-    //     $("#weather").html(html);
-    // }
+    //adding draggable marker
+    var marker = new mapboxgl.Marker({
+        draggable: true
+    })
+        .setLngLat([-98.4936, 29.4241])
+        .addTo(map);
 
-//2 With a string AND OBJECT
-// $.get("https://api.openweathermap.org/data/2.5/onecall", {
-//     APPID: OWM_TOKEN,
-//     lat: 29.4241,
-//     lon: -98.4936,
-//     units: "imperial",
-//     exclude: ["minutely", "hourly",]
-// }).done(function(data) {
-//     console.log(data);
-// });
+    function onDragEnd() {
+        var lngLat = marker.getLngLat();
+        coordinates.style.display = 'block';
+        coordinates.innerHTML =
+            'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
+    }
 
-    // function renderHtmlWithjQuery(items) {
-    //     items.forEach(function(item) {
-    //         // create the surrounding div
-    //         let $div = $('<div>').addClass('col-sm-6')
-    //
-    //         let $h2 = $('<h2>').text(item.name);
-    //         let $descriptionParagraph = $('<p>').text(item.description);
-    //         let $priceParagraph = $('<p>').text('Price: $' + item.price);
-    //
-    //         $div.append([$h2, $descriptionParagraph, $priceParagraph]);
-    //         $div.appendTo($('#items'));
-    //     });
-    // }
-})()
+    marker.on('dragend', onDragEnd);
+
+})();
+
 
 
