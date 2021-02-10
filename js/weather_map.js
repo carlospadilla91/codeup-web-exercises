@@ -27,7 +27,7 @@
             html += "<div class='card' style='width: 17rem;'>";
             html += "<div class='card-header text-center'>" + date2 + "</div>";
             html += "<ul class='list-group list-group-flush'>";
-            html += "<li class='list-group-item text-center'>" + tempMax + " / " + tempMin + "<br>" + "<img src='http://openweathermap.org/img/wn/" + iconCode + ".png'>" ;
+            html += "<li class='list-group-item text-center'>" + tempMax + "&#176F" + " / " + tempMin + "&#176F" + "<br>" + "<img src='http://openweathermap.org/img/wn/" + iconCode + ".png'>" ;
             html += "<li class='list-group-item'>" + "Description: " + "<strong>" + description + "</strong>";
             html += "<li class='list-group-item'>" + "Humidity: " + "<strong>" + humidity + "</strong>";
             html += "<li class='list-group-item'>" + "Wind: " + "<strong>" + windSpeed + "</strong>";
@@ -46,7 +46,8 @@
         zoom: 9 //starting zoom
     });
     //adding controls
-    map.addControl(new mapboxgl.NavigationControl());
+    map.addControl(
+        new mapboxgl.NavigationControl())
 
     //adding draggable marker
     var marker = new mapboxgl.Marker({
@@ -63,6 +64,21 @@
     }
 
     marker.on('dragend', onDragEnd);
+
+
+    // map.addControl(
+    //     new MapboxGeocoder({
+    //         accessToken: mapboxgl.accessToken,
+    //         mapboxgl: mapboxgl
+    //     })
+    // );
+
+    // var getValue = $("user-input").val();
+    // console.log(getValue);
+
+    // $("input").keyup(function(){
+    //     console.log(this.value);
+    // });
 
 })();
 
