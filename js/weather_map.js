@@ -64,22 +64,6 @@
     }
 
     marker.on('dragend', onDragEnd);
-
-
-    // map.addControl(
-    //     new MapboxGeocoder({
-    //         accessToken: mapboxgl.accessToken,
-    //         mapboxgl: mapboxgl
-    //     })
-    // );
-
-    // var getValue = $("user-input").val();
-    // console.log(getValue);
-
-    // $("input").keyup(function(){
-    //     console.log(this.value);
-    // });
-
 })();
 
 
