@@ -64,14 +64,15 @@
         .setLngLat([-98.4936, 29.4241])
         .addTo(map);
 
-    function onDragEnd() {
-        var lngLat = marker.getLngLat();
-        coordinates.style.display = 'block';
-        coordinates.innerHTML =
-            'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
-    }
 
-    marker.on('dragend', onDragEnd);
+    // function onDragEnd() {
+    //     var lngLat = marker.getLngLat();
+    //     coordinates.style.display = 'block';
+    //     coordinates.innerHTML =
+    //         'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
+    // }
+
+    // marker.on('dragend', onDragEnd);
 
     $("button").click(function (e) {
         e.preventDefault();
@@ -82,7 +83,9 @@
                 center: [data[0], data[1]],
                 essential: true,
                 zoom: 9,
-            })
+            });
+            marker.setLngLat([data[0], data[1]])
+            marker.addTo(map);
         })
     })
 })();
