@@ -1,25 +1,17 @@
 "use strict"
 
-// let hoverIn = function () {
-//     $(this).css({
-//         backgroundColor: "black",
-//         color: "white"
-//     });
-// };
+let newData = function () {
+    $(this).text("CODEUP ROCKS!")
+};
 //
-// let hoverOut = function () {
-//     $(this).css({
-//         backgroundColor: "",
-//         color: ""
-//     })
-// }
+let oldData = function () {
+    $(this).text("")
+}
 //hover usually takes in two parameters
 // $('.card').hover(hoverIn, hoverOut);
 
 // toggle class added from html with click
-$('.card').click(function (){
-    $(this).toggleClass("toggleClass");
-});
+$('.card').hover(hoverIn, hoverOut);
 //selector is all li that are children of class "list-group"
 // $(".list-group>li").dblclick(function (){
 //    $(this).text("I GOT DBL CLICKED!");
