@@ -1,24 +1,26 @@
 (function() {
     "use strict"
+    var lat = 29.4241;
+    var lng = -98.4936;
+    var input = $("#user-input");
 
-    // $.get("https://api.openweathermap.org/data/2.5/onecall", {
-    //     APPID: OWM_TOKEN,
-    //     lat: 29.4241,
-    //     lon: -98.4936,
-    //     units: "imperial",
-    //     exclude: "minutely,hourly"
-    // }).done(renderHtml);
+    //ajax request
+    weatherMap();
+    function weatherMap() {
+    $.get("https://api.openweathermap.org/data/2.5/onecall", {
+        APPID: OWM_TOKEN,
+        lat: lat,
+        lon: lng,
+        units: "imperial",
+        exclude: "minutely,hourly"
+    }).done(function (data) {
+        console.log(data);
+        renderHtml(data);
+    });
+}
 
-    renderHtml(29.4241, -98.4936);
-    function renderHtml(lat, lon) {
-        $.get("https://api.openweathermap.org/data/2.5/onecall", {
-            APPID: OWM_TOKEN,
-            lat: lat,
-            lon: lon,
-            units: "imperial",
-            exclude: "minutely,hourly"
-        }).done(function (data) {
-            console.log(data);
+    //this function adds data to html bootstrap cards
+    function renderHtml(data) {
             var html = "";
             for(var i = 0; i < 5; i += 1) {
                 var tempMax = data.daily[i].temp.max;
@@ -34,7 +36,7 @@
                 html += "<div class='card' style='width: 17rem;'>";
                 html += "<div class='card-header text-center'>" + date2 + "</div>";
                 html += "<ul class='list-group list-group-flush'>";
-                html += "<li class='list-group-item text-center'>" + tempMax + "&#176F" + " / " + tempMin + "&#176F" + "<br>" + "<img src='http://openweathermap.org/img/wn/" + iconCode + ".png'>" ;
+                html += "<li class='list-group-item text-center'>" + tempMax + "°F" + " / " + tempMin + "°F" + "<br>" + "<img src='http://openweathermap.org/img/wn/" + iconCode + ".png'>" ;
                 html += "<li class='list-group-item'>" + "Description: " + "<strong>" + description + "</strong>";
                 html += "<li class='list-group-item'>" + "Humidity: " + "<strong>" + humidity + "</strong>";
                 html += "<li class='list-group-item'>" + "Wind: " + "<strong>" + windSpeed + "</strong>";
@@ -43,14 +45,14 @@
                 html += "</div>";
             }
             $("#weather").html(html);
-        });
     }
 
+    //this adds the mapbox to html
     mapboxgl.accessToken = MAPBOX_TOKEN;
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11', //stylesheet location
-        center: [-98.4936, 29.4241], //starting position [lng, lat]
+        center: [lng, lat], //starting position [lng, lat]
         zoom: 9 //starting zoom
     });
     //adding controls
@@ -61,31 +63,66 @@
     var marker = new mapboxgl.Marker({
         draggable: true
     })
-        .setLngLat([-98.4936, 29.4241])
+        .setLngLat([lng, lat])
         .addTo(map);
 
+    function onDragEnd() {
+        var lngLat = marker.getLngLat();
+        lng = lngLat.lng;
+        lat = lngLat.lat;
+        reverseGeocode(lngLat, MAPBOX_TOKEN).then(function (result){
+            input.val(result)
+        })
+        weatherMap();
+    }
+    marker.on('dragend', onDragEnd);
 
-    // function onDragEnd() {
-    //     var lngLat = marker.getLngLat();
-    //     coordinates.style.display = 'block';
-    //     coordinates.innerHTML =
-    //         'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
-    // }
+    //user search function
+    function userSearch(){
+        var newInput = input.val();
+        geocode(newInput, MAPBOX_TOKEN).then(function (result){
+            lng = result[0];
+            lat = result[1];
+            marker.setLngLat([lng, lat]);
+            map.flyTo({
+                center: [lng, lat],
+                essential: true,
+                zoom: 9
+            })
+            weatherMap();
+        })
+    }
 
-    // marker.on('dragend', onDragEnd);
+    //fly to function
+    function flyTo(){
+        geocode(input.val(), MAPBOX_TOKEN).then(function (result) {
+            lng = result[0];
+            lat = result[1];
+            map.flyTo({
+                center: [lat, lng],
+                essential: true,
+                zoom: 9
+            })
+        })
+    }
 
+    //this click event
     $("button").click(function (e) {
         e.preventDefault();
-        var input = $("#user-input").val();
-        geocode(input, MAPBOX_TOKEN).then(function (data) {
-            renderHtml(data[1], data[0]);
-            map.flyTo({
-                center: [data[0], data[1]],
-                essential: true,
-                zoom: 9,
-            });
-            marker.setLngLat([data[0], data[1]])
-            marker.addTo(map);
-        })
+        userSearch();
+        // map.flyTo({
+        //     center: [lng, lat],
+        //     essential: true,
+        //     zoom: 9
+        // })
+        marker.addTo(map);
     })
 })();
+
+// map.flyTo({
+//     center: [lat, lng],
+//     essential: true,
+//     zoom: 9,
+// });
+// marker.setLngLat([data[0], data[1]])
+// marker.addTo(map);
