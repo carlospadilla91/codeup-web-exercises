@@ -18,7 +18,6 @@
         renderHtml(data);
     });
 }
-
     //this function adds data to html bootstrap cards
     function renderHtml(data) {
             var html = "";
@@ -77,7 +76,7 @@
     }
     marker.on('dragend', onDragEnd);
 
-    //user search function
+    //user search function with flyTo added
     function userSearch(){
         var newInput = input.val();
         geocode(newInput, MAPBOX_TOKEN).then(function (result){
@@ -93,36 +92,10 @@
         })
     }
 
-    //fly to function
-    function flyTo(){
-        geocode(input.val(), MAPBOX_TOKEN).then(function (result) {
-            lng = result[0];
-            lat = result[1];
-            map.flyTo({
-                center: [lat, lng],
-                essential: true,
-                zoom: 9
-            })
-        })
-    }
-
-    //this click event
+    //this click event is using userSearch function and adding marker to map based on the user search
     $("button").click(function (e) {
         e.preventDefault();
         userSearch();
-        // map.flyTo({
-        //     center: [lng, lat],
-        //     essential: true,
-        //     zoom: 9
-        // })
         marker.addTo(map);
     })
 })();
-
-// map.flyTo({
-//     center: [lat, lng],
-//     essential: true,
-//     zoom: 9,
-// });
-// marker.setLngLat([data[0], data[1]])
-// marker.addTo(map);
