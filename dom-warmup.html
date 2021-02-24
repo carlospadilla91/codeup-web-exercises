@@ -3,6 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>DOM Manipulation Warmups</title>
+    <style>
+        .letter {
+            cursor: crosshair;
+        }
+        .title-letter {
+            color: firebrick;
+            font-size: 3em;
+        }
+        .bg-colors li {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
@@ -37,6 +49,13 @@
 <div id="binary-container">
     <h2 id="#binary-display"></h2>
 </div>
+
+<hr>
+<ul class="bg-colors">
+    <li>Red</li>
+    <li>Green</li>
+    <li>Blue</li>
+</ul>
 
 <!--  Include the CDN script for jQuery below -->
 
@@ -81,6 +100,32 @@
     $('li').click(() => {
 
     })
+
+    // dom warmup 2-24-2021
+    /*
+            TODO: When an li in the ul with a class of `bg-colors` is double-clicked,
+             the background color of the page will change to the li's inner text
+         */
+
+    $(".bg-colors>li").dblclick(function (){
+        const color = $(this).text();
+        $('body').css('background-color', color);
+    });
+
+    // THIS WAS DONE WITH 3 SEPARATE EVENTS; CODE ABOVE IS DONE IN ONE EVENT
+    // $(".bg-colors>li").first().dblclick(function (){
+    //     $('body').css('background-color', 'red');
+    // });
+    //
+    // $(".bg-colors>li + li").first().dblclick(function (){
+    //     $('body').css('background-color', 'green');
+    // });
+    //
+    // $(".bg-colors>li").last().dblclick(function (){
+    //     $('body').css('background-color', 'blue');
+    // });
+
+
 
 </script>
 
