@@ -108,21 +108,21 @@
         has an identical definition as the haveTreat promise from the previous mini exercise.
      */
 
-    function trainDog(isGoodDog){
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                if (isGoodDog) {
-                    resolve("Good dog; have treat");
-                } else {
-                    reject("Bad dog; no treat");
-                }
-            }, 5000);
-        });
-    }
-
-    trainDog(true)
-        .then(data => console.log(data))
-        .catch(err => console.error(err))
+    // function trainDog(isGoodDog){
+    //     return new Promise((resolve, reject) => {
+    //         setTimeout(() => {
+    //             if (isGoodDog) {
+    //                 resolve("Good dog; have treat");
+    //             } else {
+    //                 reject("Bad dog; no treat");
+    //             }
+    //         }, 5000);
+    //     });
+    // }
+    //
+    // trainDog(true)
+    //     .then(data => console.log(data))
+    //     .catch(err => console.error(err))
 
     /* TODO: invoke the trainDog function passing in true as and argument
         chain then and catch methods to handle the returned promise. Refactor
@@ -142,7 +142,7 @@
     // ============ Fetch API
 
     // jQuery AJAX request example
-    // $.ajax('https://swapi.co/api/people/1')
+    // $.ajax('https://swapi.dev/api/people/1')
     //     .done(function(data) {
     //         console.log(data);
     //     })
@@ -152,6 +152,11 @@
 
     // Fetch API Version...
 
+    // fetch('https://swapi.dev/api/people/1')
+    //     .then(response => response.json())
+    //     .then(data => console.log(data))
+    //     .catch(err => console.error(err))
+
 
     // -------- MINI EXERCISE 3
 
@@ -159,7 +164,12 @@
         Log the text property of the first cat fact object. Be sure to log possible errors in a catch.
      */
 
-    const catFactsURL = 'https://cat-fact.herokuapp.com/facts';
+    // const catFactsURL = 'https://cat-fact.herokuapp.com/facts';
+    //
+    // fetch(catFactsURL)
+    //     .then(response => response.json())
+    //     .then(data => console.log(data[0].text))
+    //     .catch(error => console.error(error));
 
 
     // Fetch API POST example
@@ -184,6 +194,20 @@
         Experiment with sending different shapes of data in the body of the request.
      */
 
+    const config = {
+        method: "POST",
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            username: 'carlos',
+            password: 'strongpassword'
+        })
+    }
+
+    fetch('https://hookb.in/8Pw2qy9MNefBWWYjDRVD', config)
+        .then(console.log)
+        .catch(console.error)
 
 
 
