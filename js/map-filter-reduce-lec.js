@@ -343,11 +343,34 @@
 
     //Create an array of civil servant customers (teachers and police officers) containing the same properties as the objects on the customers objects
 
-    const civilServants = customers.filter((customer) => {
-        if (customer.occupation === "Police Officer" || customer.occupation === "Teacher") {
-            var newArr = [customer.name, customer.age];
-        }
-        console.log(newArr)
-    });
+    // const civilServants = customers.filter((customer) => {
+    //     if (customer.occupation === "Police Officer" || customer.occupation === "Teacher") {
+    //         var newArr = [customer.name, customer.age];
+    //     }
+    //     console.log(newArr)
+    // });
 
 // console.log(civilServants);
+
+// let numbers = [1, 2, 3, 4, 5];
+// numbers.map(n => n * 3)
+// console.log(numbers);
+
+// const isDivisibleBy3 = n => n % 3 === 0;
+//
+// const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+//
+// console.log(numbers.filter(isDivisibleBy3));
+// console.log(numbers);
+
+// const p = new Promise((resolve, reject) => {
+//      resolve(3);
+// });
+//
+// p.then(result => console.log(result));
+// p.catch(error => console.log('An error occured!'));
+
+if (true) {
+    let x = 5;
+}
+console.log(typeof x);
