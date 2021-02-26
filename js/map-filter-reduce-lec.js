@@ -176,31 +176,178 @@
 //     console.log(sum);
 // }
 
-{
-    let strArr = ['Carlos', 'Padilla', 'Noriega'];
+// {
+//     let strArr = ['Carlos', 'Padilla', 'Noriega'];
+//
+//     let fullName = strArr.reduce(function (a, cv){
+//         return a + ' ' + cv;
+//     });
+//
+//     console.log(fullName);
+//
+//     let nameStrings = [
+//         'James Hetfield',
+//         'Dave Mustaine',
+//         'Corey Taylor',
+//         'Chino Moreno',
+//         'Jonathan Davis'];
+//
+//     let namesArr = nameStrings.map(function (name) {
+//         return name.split(' ');
+//     })
+//
+//     console.log(namesArr);
+//
+//     let completeNames = namesArr.reduce(function (a, cv) {
+//         return a + ' ' + cv;
+//     })
+//
+//     console.log(completeNames);
+// }
 
-    let fullName = strArr.reduce(function (a, cv){
-        return a + ' ' + cv;
+// (function(){
+//
+//     let numArr = [1, 2, 3, 4, 5, 6];
+//
+//     let mappedNumArr = numArr.map(function(num){
+//         return num + num;
+//     })
+//
+//     mappedNumArr.forEach((num) => {console.log(num)});
+//
+// })();
+//
+// (function(){
+//
+//     let names = [
+//         'James Hetfield',
+//         'Dave Mustaine',
+//         'Corey Taylor',
+//         'Chino Moreno',
+//         'Jonathan Davis',
+//         'Maynard James Keenan'];
+//
+//     let firstNames = names.map(function(name){
+//         return name.split(' ')[0];
+//     });
+//
+//     console.log(firstNames);
+//
+// })();
+
+// (function(){
+//
+//     let names = [
+//         'James Hetfield',
+//         'Dave Mustaine',
+//         'Corey Taylor',
+//         'Chino Moreno',
+//         'Jonathan Davis'];
+//
+//     // map the string[] to an Object[]
+//     let nameObjs = names.map(function(name){
+//
+//         let nameArr = name.split(' ');
+//
+//         // not scalable, but just making an example
+//         return {firstName: nameArr[0], lastName: nameArr[1]};
+//     });
+//
+//     // AAAND we mapped that object array BACK to a string array,
+//     // this time just having the first names!
+//     let firstNames = nameObjs.map(function(name){
+//         return name.firstName;
+//     })
+//
+//     console.log(nameObjs);
+//
+//     console.log(firstNames);
+// })();
+
+// (function(){
+//
+//     let numArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+//
+//     let evens = numArr.filter(function(num){
+//
+//         // notice we are NOT returning the num itself, but rather a boolean expression
+//         // if the expression is true, the num is implicitly added to the new array 'evens'
+//         return num % 2 == 0;
+//     });
+//
+//     evens.forEach((num) => {console.log(num)});
+//
+// })();
+
+// (function(){
+//
+//     let stringArr = ['Tree', 'House', 'Car', 'Truck', 'Yard', 'Bush', 'Yasin', 'Carlos'];
+//
+//     console.log(stringArr);
+//
+//     stringArr = stringArr.filter(function(str){
+//        return  str.length <= 4;
+//     });
+//
+//     console.log(stringArr);
+//
+// })()
+
+// (function(){
+//
+//     let numArr = [1, 2, 3, 5, 8, 13, 21];
+//
+//     // let numArr = [1, 2, 3];
+//     let sum = numArr.reduce(function(accumulator, currentValue ){
+//         // console.log(accumulator);
+//         // console.log(currentValue);
+//         // return accumulator + currentValue;
+//     }, 1);
+//
+//     // console.log(sum);
+//
+// })();
+
+// {
+//     const fruits = ["cantaloupe", "orange", "date", "elderberry", "ugly fruit", "pineapple"];
+//
+//     //Create an array of the first letters of each fruit
+//
+//     let firstLetter = fruits.map(function (fruit) {
+//         return fruit.split('')[0]
+// })
+//     console.log(firstLetter);
+// }
+
+
+    const customers = [
+        {
+            name: "Fred",
+            age: 58,
+            occupation: "Police Officer",
+            noOfPurchases: 4
+        },
+        {
+            name: "Samantha",
+            age: 54,
+            occupation: "Teacher",
+            noOfPurchases: 18
+        },
+        {
+            name: "Charles",
+            age: 38,
+            occupation: "Librarian",
+            noOfPurchases: 9
+        }
+    ];
+
+    //Create an array of civil servant customers (teachers and police officers) containing the same properties as the objects on the customers objects
+
+    const civilServants = customers.filter((customer) => {
+        if (customer.occupation === "Police Officer" || customer.occupation === "Teacher") {
+            var newArr = [customer.name, customer.age];
+        }
+        console.log(newArr)
     });
 
-    console.log(fullName);
-
-    let nameStrings = [
-        'James Hetfield',
-        'Dave Mustaine',
-        'Corey Taylor',
-        'Chino Moreno',
-        'Jonathan Davis'];
-
-    let namesArr = nameStrings.map(function (name) {
-        return name.split(' ');
-    })
-
-    console.log(namesArr);
-
-    let completeNames = namesArr.reduce(function (a, cv) {
-        return a + ' ' + cv;
-    })
-
-    console.log(completeNames);
-}
+// console.log(civilServants);
