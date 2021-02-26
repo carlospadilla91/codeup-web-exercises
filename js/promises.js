@@ -43,8 +43,7 @@ function recentPush(username) {
     }))
 }
 
-console.log(recentPush("carlospadilla91"));;
-
+recentPush("carlospadilla91").then(console.log);
 // function getDateOfLastCommit(username) {
 //     const endpoint = `/users/${username}/events/public`
 //     const config = {
