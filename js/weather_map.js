@@ -4,7 +4,7 @@
     var lng = -98.4936;
     var input = $("#user-input");
 
-    //ajax request
+    // AJAX REQUEST FUNCTION
     weatherMap();
     function weatherMap() {
     $.get("https://api.openweathermap.org/data/2.5/onecall", {
@@ -18,7 +18,7 @@
         renderHtml(data);
     });
 }
-    //this function adds data to html bootstrap cards
+    // FUNCTION TO ADD HTML
     function renderHtml(data) {
             var html = "";
             for(var i = 0; i < 5; i += 1) {
@@ -46,7 +46,7 @@
             $("#weather").html(html);
     }
 
-    //this adds the mapbox to html
+    // ADDS MAP TO HTML
     mapboxgl.accessToken = MAPBOX_TOKEN;
     var map = new mapboxgl.Map({
         container: 'map',
@@ -54,11 +54,11 @@
         center: [lng, lat], //starting position [lng, lat]
         zoom: 9 //starting zoom
     });
-    //adding controls
+    // CONTROLS FOR MAP
     map.addControl(
         new mapboxgl.NavigationControl())
 
-    // adding draggable marker
+    // DRAGGABLE MARKER ON MAP
     var marker = new mapboxgl.Marker({
         draggable: true
     })
@@ -76,7 +76,7 @@
     }
     marker.on('dragend', onDragEnd);
 
-    //user search function with flyTo added
+    // FUNCTION FOR SEARCH AND FLY TO ADDED
     function userSearch(){
         var newInput = input.val();
         geocode(newInput, MAPBOX_TOKEN).then(function (result){
